@@ -24,6 +24,8 @@ read -p "${NEWLINE}Your input: \$ " curl_attempt
 # should work on any mac
 eval ${curl_attempt} | cat /dev/stdout
 
+read
+
 # the program seems to be pausing here.. not sure why. I have to ^C to kick it back into motion.
 
 if test -f "${q1FILE}"; then
@@ -31,7 +33,7 @@ if test -f "${q1FILE}"; then
 	curl $q1URL > $q1ANSWER_KEY
 	# checks the difference between answer key and user's command. Saves diff to file
 	if [ "$(diff ${q1FILE} ${q1ANSWER_KEY})" = "" ]; then
-		echo "equivalent"
+		echo "Great job!"
 	fi
 
 fi
